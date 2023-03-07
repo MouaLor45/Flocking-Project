@@ -6,8 +6,7 @@ Resource #3:
 
 
 **Anticipated Methods:**
-Alignment: 
-Cohesion: 
-Separation: 
-Repulsion: 
+Alignment: Moua
+Cohesion: Skyler
+Separation: Godwill
 (Possibly Change Circles to Triangles)
