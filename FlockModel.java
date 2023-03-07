@@ -9,7 +9,7 @@ import java.lang.Thread;
  * Models a collection of circles roaming about impacting other circles.
  * @author Amy Larson (with Erik Steinmetz)
  */
-public class CircleModel extends Thread {
+public class FlockModel extends Thread {
 
     private ArrayList<Circle> circles = new ArrayList<>();
 
@@ -23,7 +23,7 @@ public class CircleModel extends Thread {
     private SimulationGUI simulation;
 
     /** Default constructor. */
-    public CircleModel() {
+    public FlockModel() {
         // All circels that might appear in the graphics window are created, but are not visible.
         for (int i=0; i<20; i++) {
             circles.add(new Circle());
