@@ -5,10 +5,12 @@ Resource #3: https://rosettacode.org/wiki/Boids/Java
 
 
 **Anticipated Methods:**
-Alignment: Moua
-Cohesion: Skyler
-Separation: Godwill
+Alignment Method: Moua
+Cohesion Method: Skyler
+Separation Method: Godwill
+Other Methods/Work We can work on After -
 Average Direction
 Average Position
 Maintain Distance 
+GUI for the Flocking like Slider
 (Possibly Change Circles to Triangles)
