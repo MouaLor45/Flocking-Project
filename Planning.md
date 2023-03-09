@@ -9,4 +9,7 @@ Resource #3: https://rosettacode.org/wiki/Boids/Java
 Alignment: Moua
 Cohesion: Skyler
 Separation: Godwill
+Average Direction
+Average Position
+Maintain Distance 
 (Possibly Change Circles to Triangles)
