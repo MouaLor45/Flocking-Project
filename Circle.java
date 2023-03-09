@@ -145,4 +145,5 @@ public class Circle extends JPanel {
             g.fillOval(0, 0, radius * 2, radius * 2);
         }
     }
+
 }
