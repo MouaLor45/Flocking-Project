@@ -126,21 +126,19 @@ public class FlockModel extends Thread {
         stepSize = (6-newSpeed)*80; // 80 to 400ms
     }
 
-    public void alignment(ArrayList<Circle> circles) {
-        Vector v = new Vector();
-        int count = 0;
-        for(Circle c: circles) {
-            if(isNeighbor(c)){
-                v.add(c.velocity);
-                count++;
+    Vector<Circle> alignment(ArrayList<Circle> circles) {
+        
+        Vector<Circle> v = new Vector<Circle>();
+
+		int count = 0;
+
+		for(int x = 0; x < count; x++){
+            for(int y = x+1; y < count; y++){
+                if(circles.get(x).overlaps(circles.get(y)) == true){
+                    
+                }
             }
-        }
-        if(count > 0) {
-            v.div(count);
-			v.sub(velocity);
-			v.div(4);
         }
         return v;
     }
-
 }
