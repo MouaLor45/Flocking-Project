@@ -20,8 +20,13 @@ public class FlockModel extends Thread {
     private int count = 0;
     /** Pauses simulation so circles do not move */
     private boolean paused = true;
-
     private SimulationGUI simulation;
+
+    private Vector<Circle> position;
+	private Vector<Circle> nextPosition;
+	private Vector<Circle> velocity;
+	private Vector<Circle> nextVelocity;
+	private Vector<Circle> acceleration;
 
     /** Default constructor. */
     public FlockModel() {
@@ -129,16 +134,20 @@ public class FlockModel extends Thread {
     Vector<Circle> alignment(ArrayList<Circle> circles) {
         
         Vector<Circle> v = new Vector<Circle>();
-
+        
 		int count = 0;
 
-		for(int x = 0; x < count; x++){
-            for(int y = x+1; y < count; y++){
-                if(circles.get(x).overlaps(circles.get(y)) == true){
-                    
-                }
-            }
-        }
-        return v;
+		for(Circle c : circles) {
+			if(isNeighbor(c)) {
+				v.add(c.velocity);
+				count++;
+			}
+		}
+		if (count > 0) {
+			v.div(count);
+			v.sub(velocity);
+			v.div(4);
+		}
+		return v;
     }
 }
