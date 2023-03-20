@@ -22,12 +22,6 @@ public class FlockModel extends Thread {
     private boolean paused = true;
     private SimulationGUI simulation;
 
-    private Vector<Circle> position;
-	private Vector<Circle> nextPosition;
-	private Vector<Circle> velocity;
-	private Vector<Circle> nextVelocity;
-	private Vector<Circle> acceleration;
-
     /** Default constructor. */
     public FlockModel() {
         // All circels that might appear in the graphics window are created, but are not visible.
@@ -131,6 +125,20 @@ public class FlockModel extends Thread {
         stepSize = (6-newSpeed)*80; // 80 to 400ms
     }
 
+    class Agent {
+        Vector<Circle> position;
+	    Vector<Circle> nextPosition;
+	    Vector<Circle> velocity;
+	    Vector<Circle> nextVelocity;
+	    Vector<Circle> acceleration;
+      
+        Agent(float x, float y) {
+            position = new Vector();
+            velocity = new Vector();
+            acceleration = new Vector();
+        }
+    }
+
     Vector<Circle> alignment(ArrayList<Circle> circles) {
         
         Vector<Circle> v = new Vector<Circle>();
@@ -138,9 +146,8 @@ public class FlockModel extends Thread {
 		int count = 0;
 
 		for(Circle c : circles) {
-			if(isNeighbor(c)) {
-				v.add(c.velocity);
-				count++;
+			if(circles.isEmpty()) {
+				return new Vector<Circle>(0,0);
 			}
 		}
 		if (count > 0) {
