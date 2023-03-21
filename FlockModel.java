@@ -125,8 +125,4 @@ public class FlockModel extends Thread {
         stepSize = (6-newSpeed)*80; // 80 to 400ms
     }
 
-    public void alignment(ArrayList<Circle> circles) {
-        
-    }
-
 }
