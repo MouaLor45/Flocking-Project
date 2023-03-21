@@ -39,12 +39,12 @@ public class Controller implements ActionListener {
             model.pause();
 
             // Create the circles based on count
-            Integer count = Integer.valueOf(this.view.count.getText());
+            Integer count = Integer.valueOf(this.view.count.getValue());
             model.setCount(count);
 
             // Set the speed of the simulation
-            Integer speed = Integer.valueOf(this.view.speed.getText());
-            model.setSpeed(speed);
+            //Integer speed = Integer.valueOf(this.view.speed.getText());
+            //model.setSpeed(speed);
         }
         else if( ae.getActionCommand().equals( "Stop")) {
             model.pause();

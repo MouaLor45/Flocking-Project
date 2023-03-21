@@ -24,6 +24,10 @@ public class Circle extends JPanel {
     private final int yMINRANGE = 160;
     private final int yMAXRANGE = 740;
 
+    private Vector2D velocity;
+    private Vector2D acceleration;
+    private double maxSpeed;
+
     /** Fixed size */
     private int radius = 30;
     
@@ -74,6 +78,10 @@ public class Circle extends JPanel {
         randomXY();
         randomDirection();
         randomColor();
+
+        velocity = new Vector2D(0, 0);
+        acceleration = new Vector2D(0, 0);
+        maxSpeed = 10.0; // default max speed
     }
 
     boolean overlaps(Circle other){
@@ -146,4 +154,35 @@ public class Circle extends JPanel {
         }
     }
 
+    public Vector2D getVelocity() {
+        return velocity;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void applyForce(Vector2D force) {
+        acceleration = acceleration.add(force);
+    }
+
+    public Vector2D subtract(Circle other) {
+        double dx = this.xy.x - other.xy.x;
+        double dy = this.xy.y - other.xy.y;
+        return new Vector2D(dx, dy);
+    }
+
+    public double distance(Circle v) {
+        double dx = this.xy.x - v.xy.x;
+        double dy = this.xy.y - v.xy.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    public void normalize() {
+        double magnitude = Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
+        if (magnitude != 0) {
+            velocity.x /= magnitude;
+            velocity.y /= magnitude;
+        }
+    }
 }
