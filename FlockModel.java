@@ -41,6 +41,7 @@ public class FlockModel extends Thread {
                 advanceCircles();
                 testOverlap();
                 simulation.getContentPane().repaint();
+                Flockalignment();
             }
             try {
                 Thread.sleep(stepSize);
