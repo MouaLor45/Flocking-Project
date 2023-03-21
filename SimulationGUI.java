@@ -1,8 +1,4 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -15,11 +11,15 @@ public class SimulationGUI extends JFrame {
 
     // Controller GUI Components
     private final JLabel countLabel = new JLabel("Circles (2-20): ");
-    protected final JTextField count = new JTextField(10);
-
-    private final JLabel speedLabel = new JLabel("Speed (1-5): ");
-    protected final JTextField speed = new JTextField(10);
-
+    protected final JSlider count = new JSlider(2, 20, 10);
+    //private final JLabel speedLabel = new JLabel("Speed (1-5): ");
+    //protected final JTextField speed = new JTextField(10);
+    private final JLabel separationLabel = new JLabel("Separation: ");
+    protected final JSlider separation = new JSlider();
+    private final JLabel cohesionLabel = new JLabel("Coherence: ");
+    protected final JSlider cohesion = new JSlider();
+    private final JLabel alignmentLabel = new JLabel("Alignment: ");
+    protected final JSlider alignment = new JSlider();
     private final JButton stop = new JButton("Stop");
     private final JButton play = new JButton("Play");
     private final JButton restart = new JButton("Set Up");
@@ -59,16 +59,37 @@ public class SimulationGUI extends JFrame {
         // Place the circle count label and text box
         this.countLabel.setBounds(20,20,100,30);
         this.getContentPane().add(this.countLabel);
-        
+
         this.count.setBounds(115, 20, 80, 30);
         this.getContentPane().add(count);
         
         // place the sim speed label and text box
-        this.speedLabel.setBounds( 20, 50, 100, 30);
-        this.getContentPane().add(this.speedLabel);
+        //this.speedLabel.setBounds( 20, 50, 100, 30);
+        //this.getContentPane().add(this.speedLabel);
         
-        this.speed.setBounds(115, 50, 80, 30);
-        this.getContentPane().add(this.speed);
+        //this.speed.setBounds(115, 50, 80, 30);
+        //this.getContentPane().add(this.speed);
+
+        // place the separation label and text box
+        this.separationLabel.setBounds( 20, 50, 100, 30);
+        this.getContentPane().add(this.separationLabel);
+
+        this.separation.setBounds(115, 50, 80, 30);
+        this.getContentPane().add(this.separation);
+
+        // place the cohesion label and text box
+        this.cohesionLabel.setBounds( 220, 50, 100, 30);
+        this.getContentPane().add(this.cohesionLabel);
+
+        this.cohesion.setBounds(300, 50, 80, 30);
+        this.getContentPane().add(this.cohesion);
+
+        // place the alignment label and text box
+        this.alignmentLabel.setBounds( 400, 50, 100, 30);
+        this.getContentPane().add(this.alignmentLabel);
+
+        this.alignment.setBounds(485, 50, 80, 30);
+        this.getContentPane().add(this.alignment);
 
         // place the restart button 
         this.restart.setBounds(200, 20, 120, 30);
