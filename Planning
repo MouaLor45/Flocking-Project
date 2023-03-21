@@ -4,13 +4,14 @@ Resource #2: https://medium.com/@errazkim/boids-simulation-in-java-407d2e924e1f
 Resource #3: https://rosettacode.org/wiki/Boids/Java
 
 
-**Anticipated Methods:**
+**Anticipated Methods and GUI Changes:**
+Spring Break Plans:
 Alignment Method: Moua
 Cohesion Method: Skyler
 Separation Method: Godwill
-Other Methods/Work We can work on After -
-Average Direction
-Average Position
-Maintain Distance 
-GUI for the Flocking like Slider
-(Possibly Change Circles to Triangles)
+
+March 21st Plans:
+Update ReadMe and Planning Documents - Moua
+GUI sliders for the Flocking - Godwill
+Add JavaDocs/Comments/Citations On all our methods - ALL
+
