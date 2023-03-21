@@ -3,7 +3,6 @@
  */
 
 import java.util.ArrayList;
-import java.util.Vector;
 import java.lang.Thread;
 
 /**
@@ -125,37 +124,24 @@ public class FlockModel extends Thread {
         stepSize = (6-newSpeed)*80; // 80 to 400ms
     }
 
-    class Agent {
-        Vector<Circle> position;
-	    Vector<Circle> nextPosition;
-	    Vector<Circle> velocity;
-	    Vector<Circle> nextVelocity;
-	    Vector<Circle> acceleration;
-      
-        Agent(float x, float y) {
-            position = new Vector();
-            velocity = new Vector();
-            acceleration = new Vector();
-        }
-    }
 
-    Vector<Circle> alignment(ArrayList<Circle> circles) {
+    public void Flockalignment() {
         System.out.println("Alignment Testing");
-        
-        Vector<Circle> v = new Vector<Circle>();
-        
 		int count = 0;
-
-		for(Circle c : circles) {
-			if(circles.isEmpty()) {
-				return new Vector<Circle>(0,0);
-			}
-		}
+        Vector2D v = new Vector2D(0, 0);
+		for(int x = 0; x < count; x++){
+            for(int y = x+1; y < count; y++){
+                if(circles.get(x).overlaps(circles.get(y)) == true){
+                    double circlexdifference = circles.get(x).direction.x - circles.get(y).direction.x;
+                    double circleydifference = circles.get(x).direction.y - circles.get(y).direction.y;
+                    v.x = circlexdifference;
+                    v.y = circleydifference;
+                    count++;
+                }
+            }
+        }
 		if (count > 0) {
-			v.div(count);
-			v.sub(velocity);
-			v.div(4);
+			v = v.divide(count);
 		}
-		return v;
     }
 }
