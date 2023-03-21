@@ -140,6 +140,7 @@ public class FlockModel extends Thread {
     }
 
     Vector<Circle> alignment(ArrayList<Circle> circles) {
+        System.out.println("Alignment Testing");
         
         Vector<Circle> v = new Vector<Circle>();
         
