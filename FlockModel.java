@@ -51,10 +51,19 @@ public class FlockModel extends Thread {
         }
     }
 
+    //Tests for overlapping circles
     public void testOverlap(){
         for(int i = 0; i < count; i++){
             for(int j = i + 1; j < count; j++){
                 circles.get(j).overlaps(circles.get(i));
+            }
+        }
+    }
+    
+    public void testCohesion(){
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < count; j++){
+                
             }
         }
     }
