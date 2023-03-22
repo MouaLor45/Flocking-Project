@@ -46,6 +46,10 @@ public class Circle extends JPanel {
     /** Drawn in window when visible */
     private boolean visible = false;
 
+    public int circleCounter = 0;
+
+    private Vector2D vector;
+
     /** Reassigns member variables to the circle. */
     public void reset() {
         randomXY();
@@ -85,20 +89,29 @@ public class Circle extends JPanel {
     }
 
     boolean overlaps(Circle other){
+        
         double xPos = other.xy.x - xy.x;
         double yPos = xy.y - other.xy.y;
+
+        double avgDirX = Math.sqrt(Math.pow(((xy.x + other.xy.x) / 2), 2));
+        double avgDirY = Math.sqrt(Math.pow(((xy.x + other.xy.y) / 2), 2));
 
         double hypot;
 
         hypot = Math.sqrt(Math.pow(xPos, 2) + Math.pow(yPos, 2));
 
         if(hypot < (radius + other.radius)){
-            randomDirection();
+            xy.x = (int) avgDirX;
+            xy.y = (int) avgDirY;
+            other.xy.x = (int) avgDirX;
+            other.xy.y = (int) avgDirY;
             return true;
         }else{
             return false;
         }
     }
+
+
 
     /** Randomly assign its location based on the fixed ranges. */
     public void randomXY() {
@@ -110,8 +123,8 @@ public class Circle extends JPanel {
     /** Randomly point it in a direction with random "speed" */
     public void randomDirection() {
         // set in a random direction
-        direction.x = random.nextInt(6) - 3;
-        direction.y = random.nextInt(6) - 3;
+        direction.x = (random.nextInt(3) - 1) * 5;
+        direction.y = (random.nextInt(3) - 1) * 5;
     }
 
     /** Randomly assign the RGB components */
@@ -124,6 +137,10 @@ public class Circle extends JPanel {
     public void step() {
         xy.x += direction.x;
         xy.y += direction.y;
+
+        //xy.x += 5;
+        //xy.y += 5;
+
         if(xy.x < xMINRANGE || xy.x > xMAXRANGE){
             direction.x *= -1;
             randomColor();
