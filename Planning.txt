@@ -13,3 +13,7 @@ March 21st Plans:
 Update ReadMe and Planning Documents - Moua
 GUI sliders for the Flocking - Godwill
 Add JavaDocs/Comments/Citations On all our methods - ALL
+
+Incomplete Work:
+Population Size Toggle
+Larger playground/map
