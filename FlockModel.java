@@ -19,7 +19,6 @@ public class FlockModel extends Thread {
     private int count = 0;
     /** Pauses simulation so circles do not move */
     private boolean paused = true;
-
     private SimulationGUI simulation;
 
     /** Default constructor. */
@@ -41,6 +40,7 @@ public class FlockModel extends Thread {
             if (!paused) {
                 advanceCircles();
                 testOverlap();
+                Flockalignment();
                 simulation.getContentPane().repaint();
             }
             try {
@@ -124,5 +124,4 @@ public class FlockModel extends Thread {
         }
         stepSize = (6-newSpeed)*80; // 80 to 400ms
     }
-
 }

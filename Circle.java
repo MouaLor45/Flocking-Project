@@ -38,7 +38,7 @@ public class Circle extends JPanel {
     private Point xy = new Point(0, 0);
 
     /** Delta of location at each timestep */
-    private Point direction = new Point(+1, +1);
+    Point direction = new Point(+1, +1);
 
     /** Circels have many random components */
     private Random random = new Random();
