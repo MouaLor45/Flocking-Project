@@ -2,8 +2,8 @@
  * Circle Model.java
  */
 
-import java.util.ArrayList;
 import java.lang.Thread;
+import java.util.ArrayList;
 
 /**
  * Models a collection of circles roaming about impacting other circles.
@@ -151,6 +151,36 @@ public class FlockModel extends Thread {
 		if (count > 0) {
 			v = v.divide(count);
 		}
+    }
+
+    /**
+     * Set new vector direction to separate circles into different direction
+     */
+    public void flockSeparation() {
+        double desiredSeparation = 20.0; // distance between circles at which separation should be maximized
+
+        for (int i = 0; i < count; i++) {
+            Vector2D sum = new Vector2D(0, 0);
+            int countSeparation = 0;
+
+            for (int j = 0; j < count; j++) {
+                if (i != j) {
+                    double d = circles.get(i).distance(circles.get(j));
+                    if (d < desiredSeparation) {
+                        Vector2D diff = circles.get(i).subtract(circles.get(j));
+                        diff = diff.divide(d);
+                        sum = sum.add(diff);
+                        countSeparation++;
+                    }
+                }
+            }
+
+            if (countSeparation > 0) {
+                sum = sum.divide(countSeparation);
+                sum = sum.normalize().multiply(circles.get(i).getMaxSpeed()).subtract(circles.get(i).getVelocity());
+                circles.get(i).applyForce(sum);
+            }
+        }
     }
 
 }
