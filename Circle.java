@@ -44,6 +44,8 @@ public class Circle extends JPanel {
 
     public int circleCounter = 0;
 
+    private Vector2D vector;
+
     /** Reassigns member variables to the circle. */
     public void reset() {
         randomXY();
