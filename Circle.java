@@ -27,6 +27,7 @@ public class Circle extends JPanel {
     private Vector2D velocity;
     private Vector2D acceleration;
     private double maxSpeed;
+    private double maxForce;
 
     /** Fixed size */
     private int radius = 30;
@@ -177,6 +178,10 @@ public class Circle extends JPanel {
 
     public double getMaxSpeed() {
         return maxSpeed;
+    }
+
+    public double getMaxForce() {
+        return maxForce;
     }
 
     public void applyForce(Vector2D force) {

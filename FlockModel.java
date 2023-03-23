@@ -137,7 +137,7 @@ public class FlockModel extends Thread {
     }
 
     /**
-     * Set new vector direction to overlapped circles into same direction
+     * Set new vector direction to nearby circles into same direction
      */
     Vector2D Flockalignment() {
         System.out.println("Alignment Testing");
@@ -146,7 +146,7 @@ public class FlockModel extends Thread {
         double sumY = 0;
         Vector2D avgdirection = new Vector2D(0, 0); // New direction the circles will be following
 		for(Circle c: circles){
-            // calculates the average direction of overlapped circles directions into a new one 
+            // calculates the average direction of circles directions into a new one 
             sumX += c.direction.x;
             sumY += c.direction.y;
             sumX = sumX/count;
@@ -156,6 +156,7 @@ public class FlockModel extends Thread {
             avgdirection.y = sumY;
             if (count > 0) {
                 avgdirection = avgdirection.divide(count);
+                avgdirection.normalize();
             }
         }
         return avgdirection;
@@ -165,11 +166,10 @@ public class FlockModel extends Thread {
     /**
      * Set new vector direction to separate circles into different direction
      */
-    public void flockSeparation() {
+    Vector2D flockSeparation() {
         double desiredSeparation = 20.0; // distance between circles at which separation should be maximized
-
+        Vector2D avgneighbors = new Vector2D(0, 0);
         for (int i = 0; i < count; i++) {
-            Vector2D sum = new Vector2D(0, 0);
             int countSeparation = 0;
 
             for (int j = 0; j < count; j++) {
@@ -178,18 +178,19 @@ public class FlockModel extends Thread {
                     if (d < desiredSeparation) {
                         Vector2D diff = circles.get(i).subtract(circles.get(j));
                         diff = diff.divide(d);
-                        sum = sum.add(diff);
+                        avgneighbors = avgneighbors.add(diff);
                         countSeparation++;
                     }
                 }
             }
 
             if (countSeparation > 0) {
-                sum = sum.divide(countSeparation);
-                sum = sum.normalize().multiply(circles.get(i).getMaxSpeed()).subtract(circles.get(i).getVelocity());
-                circles.get(i).applyForce(sum);
+                avgneighbors = avgneighbors.divide(countSeparation);
+                avgneighbors = avgneighbors.normalize().multiply(circles.get(i).getMaxSpeed()).subtract(circles.get(i).getVelocity());
+                circles.get(i).applyForce(avgneighbors);
             }
         }
+        return avgneighbors;
     }
 
 }
