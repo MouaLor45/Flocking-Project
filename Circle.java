@@ -102,10 +102,12 @@ public class Circle extends JPanel {
         hypot = Math.sqrt(Math.pow(xPos, 2) + Math.pow(yPos, 2));
 
         if(hypot < (radius + other.radius)){
+            /* 
             xy.x = (int) avgDirX;
             xy.y = (int) avgDirY;
             other.xy.x = (int) avgDirX;
             other.xy.y = (int) avgDirY;
+            */
             return true;
         }else{
             return false;
