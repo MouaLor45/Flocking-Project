@@ -126,7 +126,8 @@ public class FlockModel extends Thread {
     }
 
     /**
-     * Set new vector direction to nearby circles into same direction
+     * Set new vector direction to get sum directiton of all boids
+     * @return average direction vector
      */
     Vector2D Flockalignment() {
         System.out.println("Alignment Testing");
@@ -154,6 +155,7 @@ public class FlockModel extends Thread {
 
     /**
      * Set new vector direction to separate circles into different direction
+     * @return averageneighbors vector
      */
     Vector2D flockSeparation() {
         System.out.println("Seperation Testing");
@@ -183,6 +185,10 @@ public class FlockModel extends Thread {
         return avgneighbors;
     }
 
+    /**
+     * Set new vector position to get sum position of all boids
+     * @return average postion vector
+     */
     public Vector2D flockCohesion(){
         Vector2D cohesionVector = new Vector2D(0, 0);
         int count = 0;
@@ -200,7 +206,11 @@ public class FlockModel extends Thread {
         }
     }
     
+    /**
+     * Adds the vectors final direction values into all boids
+     */
     public void finalVector(){
+        // Vector that sums up all 3 methods vectors x and y vectors
         Vector2D finalVector = new Vector2D(flockCohesion().x + flockSeparation().x + Flockalignment().x, flockCohesion().y + flockSeparation().y + Flockalignment().y);
         for(Circle c: circles){
             c.direction.x = (int) (c.direction.x + finalVector.x);
