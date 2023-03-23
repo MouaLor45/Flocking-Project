@@ -41,6 +41,8 @@ public class FlockModel extends Thread {
                 advanceCircles();
                 testOverlap();
                 Flockalignment();
+                testCohesion();
+                flockSeparation();
                 simulation.getContentPane().repaint();
             }
             try {
