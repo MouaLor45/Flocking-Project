@@ -39,10 +39,6 @@ public class FlockModel extends Thread {
             // Move things only if the simulation is not paused
             if (!paused) {
                 advanceCircles();
-                testOverlap();
-                Flockalignment();
-                testCohesion();
-                flockSeparation();
                 simulation.getContentPane().repaint();
             }
             try {
@@ -167,6 +163,7 @@ public class FlockModel extends Thread {
      * Set new vector direction to separate circles into different direction
      */
     Vector2D flockSeparation() {
+        System.out.println("Seperation Testing");
         double desiredSeparation = 20.0; // distance between circles at which separation should be maximized
         Vector2D avgneighbors = new Vector2D(0, 0);
         for (int i = 0; i < count; i++) {
