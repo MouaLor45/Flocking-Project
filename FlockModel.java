@@ -193,7 +193,7 @@ public class FlockModel extends Thread {
         return avgneighbors;
     }
 
-    public void flockCohesion(){
+    public Vector2D flockCohesion(){
         Vector2D cohesionVector = new Vector2D(0, 0);
         for(int i = 0; i < count; i++){
             for(int j = i + 1; j < count; j++){
@@ -205,6 +205,7 @@ public class FlockModel extends Thread {
                 }
             }
         }
+        return cohesionVector;
     }
 
 }
