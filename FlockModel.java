@@ -128,28 +128,25 @@ public class FlockModel extends Thread {
     /**
      * Set new vector direction to overlapped circles into same direction
      */
-    public void Flockalignment() {
+    Vector2D Flockalignment() {
         System.out.println("Alignment Testing");
 		int count = 0;
-        Vector2D v = new Vector2D(0, 0); // New direction the circles will be following
-		for(int x = 0; x < count; x++){
-            for(int y = x+1; y < count; y++){
-                // calculates the difference of overlapped circles directions into a new one 
-                if(circles.get(x).overlaps(circles.get(y)) == true){
-                    double circlexdifference = circles.get(x).direction.x - circles.get(y).direction.x;
-                    double circleydifference = circles.get(x).direction.y - circles.get(y).direction.y;
-                    v.x = circlexdifference;
-                    v.y = circleydifference;
-                    circles.get(x).direction.x = (int) v.x;
-                    circles.get(x).direction.y = (int) v.y;
-                    circles.get(y).direction.x = (int) v.x;
-                    circles.get(y).direction.y = (int) v.y;
-                    count++;
-                }
+        double sumX = 0;
+        double sumY = 0;
+        Vector2D avgdirection = new Vector2D(0, 0); // New direction the circles will be following
+		for(Circle c: circles){
+            // calculates the average direction of overlapped circles directions into a new one 
+            sumX += c.direction.x;
+            sumY += c.direction.y;
+            sumX = sumX/count;
+            sumY = sumY/count;
+            count++;
+            avgdirection.x = sumX;
+            avgdirection.y = sumY;
+            if (count > 0) {
+                avgdirection = avgdirection.divide(count);
             }
         }
-		if (count > 0) {
-			v = v.divide(count);
-		}
+        return avgdirection;
     }
 }
