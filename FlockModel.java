@@ -192,4 +192,18 @@ public class FlockModel extends Thread {
         }
     }
 
+    public void flockCohesion(){
+        Vector2D cohesionVector = new Vector2D(0, 0);
+        for(int i = 0; i < count; i++){
+            for(int j = i + 1; j < count; j++){
+                if(circles.get(i).overlaps(circles.get(j))){
+                    int avgXPos = (circles.get(i).getXY().x * circles.get(j).getXY().x) / 2;
+                    int avgYPos = (circles.get(i).getXY().y * circles.get(j).getXY().y) / 2;
+                    cohesionVector.x = avgXPos;
+                    cohesionVector.y = avgYPos;
+                }
+            }
+        }
+    }
+
 }
