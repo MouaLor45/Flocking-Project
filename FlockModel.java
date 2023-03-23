@@ -202,6 +202,10 @@ public class FlockModel extends Thread {
                 }
             }
         }
+        if (count > 0) {
+            cohesionVector.divide(count);
+        } 
+
         return cohesionVector;
     }
 
