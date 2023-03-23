@@ -39,6 +39,7 @@ public class FlockModel extends Thread {
             // Move things only if the simulation is not paused
             if (!paused) {
                 advanceCircles();
+                finalVector();
                 simulation.getContentPane().repaint();
             }
             try {
@@ -54,14 +55,6 @@ public class FlockModel extends Thread {
         for(int i = 0; i < count; i++){
             for(int j = i + 1; j < count; j++){
                 circles.get(j).overlaps(circles.get(i));
-            }
-        }
-    }
-    
-    public void testCohesion(){
-        for(int i = 0; i < count; i++){
-            for(int j = 0; j < count; j++){
-                
             }
         }
     }
@@ -209,7 +202,10 @@ public class FlockModel extends Thread {
     
     public void finalVector(){
         Vector2D finalVector = new Vector2D(flockCohesion().x + flockSeparation().x + Flockalignment().x, flockCohesion().y + flockSeparation().y + Flockalignment().y);
-        
+        for(Circle c: circles){
+            c.direction.x = (int) (c.direction.x + finalVector.x);
+            c.direction.y = (int) (c.direction.y + finalVector.y);
+        }
     }
 
 }
