@@ -208,5 +208,10 @@ public class FlockModel extends Thread {
 
         return cohesionVector;
     }
+    
+    public void finalVector(){
+        Vector2D finalVector = new Vector2D(flockCohesion().x + flockSeparation().x + Flockalignment().x, flockCohesion().y + flockSeparation().y + Flockalignment().y);
+        
+    }
 
 }
