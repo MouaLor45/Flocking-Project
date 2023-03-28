@@ -13,6 +13,8 @@ public class FlockModel extends Thread {
 
     private ArrayList<Circle> circles = new ArrayList<>();
 
+int it = 0;
+
     /** Time in ms. "Frame rate" for redrawing the circles. */
     private int stepSize = 200;
     /** Current number of circles visible in the window. */
@@ -36,6 +38,7 @@ public class FlockModel extends Thread {
     public void run() {
         // Forever run the simulation
         while(true) {
+            System.out.println("**HERE** " + it++ + " " + count);
             // Move things only if the simulation is not paused
             if (!paused) {
                 advanceCircles();
@@ -43,7 +46,8 @@ public class FlockModel extends Thread {
                 simulation.getContentPane().repaint();
             }
             try {
-                Thread.sleep(stepSize);
+                //Thread.sleep(stepSize);
+                Thread.sleep(100);
             } catch (Exception e) {
 
             }
@@ -121,7 +125,7 @@ public class FlockModel extends Thread {
      * @return average direction vector
      */
     Vector2D Flockalignment() {
-        System.out.println("Alignment Testing");
+        //System.out.println("Alignment Testing");
 		int count = 0;
         double sumX = 0;
         double sumY = 0;
@@ -149,7 +153,7 @@ public class FlockModel extends Thread {
      * @return averageneighbors vector
      */
     Vector2D flockSeparation() {
-        System.out.println("Seperation Testing");
+        //System.out.println("Seperation Testing");
         double desiredSeparation = 20.0; // distance between circles at which separation should be maximized
         Vector2D avgneighbors = new Vector2D(0, 0);
         for (int i = 0; i < count; i++) {
@@ -203,6 +207,7 @@ public class FlockModel extends Thread {
     public void finalVector(){
         // Vector that sums up all 3 methods vectors x and y vectors
         Vector2D finalVector = new Vector2D(flockCohesion().x + flockSeparation().x + Flockalignment().x, flockCohesion().y + flockSeparation().y + Flockalignment().y);
+        System.out.println("FINAL VECTOR " + finalVector.x + ", " + finalVector.y);
         for(Circle c: circles){
             c.direction.x += (int) (finalVector.x);
             c.direction.y += (int) (finalVector.y);

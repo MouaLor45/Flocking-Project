@@ -30,7 +30,7 @@ public class Circle extends JPanel {
     private double maxForce;
 
     /** Fixed size */
-    private int radius = 30;
+    private int radius = 10;
     
     /** Color specified in RGB */
     private Color color = new Color(10, 10, 10);
@@ -119,11 +119,17 @@ public class Circle extends JPanel {
 
         if(xy.x < xMINRANGE || xy.x > xMAXRANGE){
             direction.x *= -1;
-            randomColor();
+            //randomColor();
         }
         if(xy.y < yMINRANGE || xy.y > yMAXRANGE){
             direction.y *= -1;
-            randomColor();
+            //randomColor();
+        }
+        if(xy.x > xMAXRANGE){
+            xy.x = xMAXRANGE;
+        }
+        if(xy.y > yMAXRANGE){
+            xy.y = yMAXRANGE;
         }
     }
 
@@ -141,6 +147,9 @@ public class Circle extends JPanel {
         // This is called every time the circle location is reset in the CircleModel
         // System.out.print(" P"+id);
         super.paintComponent(g);
+        if(id == 0){
+            System.out.println("Position: " + getXY());
+        }
         if (visible) {
             g.setColor(color);
             g.fillOval(0, 0, radius * 2, radius * 2);
