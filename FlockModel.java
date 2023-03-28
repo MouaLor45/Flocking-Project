@@ -50,15 +50,6 @@ public class FlockModel extends Thread {
         }
     }
 
-    //Tests for overlapping circles
-    public void testOverlap(){
-        for(int i = 0; i < count; i++){
-            for(int j = i + 1; j < count; j++){
-                circles.get(j).overlaps(circles.get(i));
-            }
-        }
-    }
-
     /** Pause the simulation - circles freeze. */
     public void pause() {
         paused = true;
@@ -213,8 +204,8 @@ public class FlockModel extends Thread {
         // Vector that sums up all 3 methods vectors x and y vectors
         Vector2D finalVector = new Vector2D(flockCohesion().x + flockSeparation().x + Flockalignment().x, flockCohesion().y + flockSeparation().y + Flockalignment().y);
         for(Circle c: circles){
-            c.direction.x = (int) (c.direction.x + finalVector.x);
-            c.direction.y = (int) (c.direction.y + finalVector.y);
+            c.direction.x += (int) (finalVector.x);
+            c.direction.y += (int) (finalVector.y);
         }
     }
 

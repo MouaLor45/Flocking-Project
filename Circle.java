@@ -89,33 +89,6 @@ public class Circle extends JPanel {
         maxSpeed = 10.0; // default max speed
     }
 
-    boolean overlaps(Circle other){
-        
-        double xPos = other.xy.x - xy.x;
-        double yPos = xy.y - other.xy.y;
-
-        double avgDirX = Math.sqrt(Math.pow(((xy.x + other.xy.x) / 2), 2));
-        double avgDirY = Math.sqrt(Math.pow(((xy.x + other.xy.y) / 2), 2));
-
-        double hypot;
-
-        hypot = Math.sqrt(Math.pow(xPos, 2) + Math.pow(yPos, 2));
-
-        if(hypot < (radius + other.radius)){
-            /* 
-            xy.x = (int) avgDirX;
-            xy.y = (int) avgDirY;
-            other.xy.x = (int) avgDirX;
-            other.xy.y = (int) avgDirY;
-            */
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-
-
     /** Randomly assign its location based on the fixed ranges. */
     public void randomXY() {
         // place at random location
