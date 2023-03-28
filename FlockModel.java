@@ -134,18 +134,17 @@ int it = 0;
             // calculates the average direction of circles directions into a new one 
             sumX += c.direction.x;
             sumY += c.direction.y;
-            sumX = sumX/count;
-            sumY = sumY/count;
             count++;
+        }
+
             avgdirection.x = sumX;
             avgdirection.y = sumY;
             if (count > 0) {
                 avgdirection = avgdirection.divide(count);
                 avgdirection.normalize();
             }
+            return avgdirection;
         }
-        return avgdirection;
-    }
     
 
     /**
@@ -206,10 +205,13 @@ int it = 0;
      */
     public void finalVector(){
         // Vector that sums up all 3 methods vectors x and y vectors
-        Vector2D finalVector = new Vector2D(flockCohesion().x + flockSeparation().x + Flockalignment().x, flockCohesion().y + flockSeparation().y + Flockalignment().y);
-        System.out.println("FINAL VECTOR " + finalVector.x + ", " + finalVector.y);
+        Vector2D cohesion = flockCohesion();
         for(Circle c: circles){
-            c.direction.x += (int) (finalVector.x);
+            cohesion.x -= c.getXY().x;
+            cohesion.y -= c.getXY().y;
+
+            //need to add the serperation and alignment variables
+            c.direction.x += (int) (cohesion.x) + seperation.x + alignment.x;
             c.direction.y += (int) (finalVector.y);
         }
     }
