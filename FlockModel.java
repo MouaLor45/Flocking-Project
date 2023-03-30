@@ -206,13 +206,15 @@ int it = 0;
     public void finalVector(){
         // Vector that sums up all 3 methods vectors x and y vectors
         Vector2D cohesion = flockCohesion();
+        Vector2D seperation = flockSeparation();
+        Vector2D alignment = Flockalignment();
         for(Circle c: circles){
             cohesion.x -= c.getXY().x;
             cohesion.y -= c.getXY().y;
 
             //need to add the serperation and alignment variables
-            c.direction.x += (int) (cohesion.x) + seperation.x + alignment.x;
-            c.direction.y += (int) (finalVector.y);
+            c.direction.x += (int) cohesion.x + seperation.x + alignment.x;
+            c.direction.y += (int) (cohesion.y + seperation.y + alignment.y);
         }
     }
 
