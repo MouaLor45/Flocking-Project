@@ -12,8 +12,14 @@ Separation Method: Godwill
 March 21st Plans:
 Update ReadMe and Planning Documents - Moua
 GUI sliders for the Flocking - Godwill
-Add JavaDocs/Comments/Citations On all our methods - ALL
+Add JavaDocs/Comments/Citations On all our methods - All
+
+March 28th Plans:
+Fix invisible circles bug - All
+Update Vector Math - Their respective method
+Prepare Presentation - All
 
 Incomplete Work:
 Population Size Toggle
 Larger playground/map
+Vector Math
